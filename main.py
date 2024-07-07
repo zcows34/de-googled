@@ -1,6 +1,7 @@
 import urllib.parse
 import requests
 import json
+import os
 def main(args):
     html="""<!DOCTYPE html>
 <html>
@@ -46,7 +47,7 @@ def main(args):
     if not args.get('q'):
         return {"body":html+"<center><p>To get started add ?q=(query) into the url bar</p><p>Example: .../?q=hello+world</p></center></body></html>"}
     q=urllib.parse.quote(args['q'])
-    url=""
+    url=os.environ['REQURL']
     
     response=requests.get(url).text
     renc=json.loads(response)
