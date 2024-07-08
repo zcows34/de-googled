@@ -16,6 +16,8 @@ def site():
 	}
 	response=requests.post(url,data=query).text
 	renc=json.loads(response)
+	if not renc['items']:
+		return open("default.html").read()+"<center><p>No results found</p></center></body></html>"
 	items=renc['items']
 	n=""
 	for obj in items:
