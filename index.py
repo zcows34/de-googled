@@ -20,5 +20,5 @@ def site():
 	n=""
 	for obj in items:
 		n=n+f"<h2>{obj['title']} (<a href=\"{obj['link']}\" target=\"_blank\" rel=\"noopener noreferrer\">{obj['link']}</a>)</h2><p>{obj['htmlSnippet']}</p><br/>"
-	print(n)
+	print(f'{request.remote_addr}, {request.args.get("q")}')
 	return open("default.html").read()+"\n"+n+"</center></body></html>"
